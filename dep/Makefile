@@ -262,3 +262,6 @@ src: glew-2.1.0 glfw jansson-2.12 speexdsp-SpeexDSP-1.2rc3 openssl-1.1.1k curl-7
 clean:
 	git clean -fdx
 	git submodule foreach git clean -fdx
+
+# This builds only the packages that aren't available in Debian as shared libs
+nodebshlib: $(nanovg) $(nanosvg) $(osdialog) $(oui-blendish) $(fuzzysearchdatabase) $(ghcfilesystem) $(pffft)
