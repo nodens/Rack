@@ -41,8 +41,10 @@ cd Fundamental
 git submodule update --init --recursive
 make dep
 make
+make install # installs in ~/.Rack
 ```
 
+(note that if Fundamental has the same version, the module directory has to be deleted from ~/.Rack2/plugins/)
 **run Rack**:
 `LD_LIBRARY_PATH=. ./Rack`
 
