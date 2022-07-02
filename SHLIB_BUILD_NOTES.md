@@ -21,13 +21,15 @@ Arch packaging does exactly that, so we'll copy the approach (from <https://aur.
 
 **Build**
 ```
-  _ldflags="-shared -ldl \
+  _ldflags="\
+    -shared \
+    -ldl \
     $(pkg-config --libs glew \
     glfw3 jansson libcurl openssl \
     libarchive libzstd speexdsp \
     samplerate rtmidi rtaudio)"
   make -C dep nodebshlib
-  make LDFLAGS+="$_ldflags" STANDALONE_LDFLAGS="$LDFLAGS"
+  make LDFLAGS+="$_ldflags" all"
 ```
 At this stage, it fails, probably due to `ac73ef4` which appears to rely on unreleased rtaudio changes.
 Let's do as the Arch folks, and revert this commit:
