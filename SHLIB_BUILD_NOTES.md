@@ -29,7 +29,7 @@ Arch packaging does exactly that, so we'll copy the approach (from <https://aur.
     libarchive libzstd speexdsp \
     samplerate rtmidi rtaudio)"
   make -C dep nodebshlib
-  make LDFLAGS+="$_ldflags" all"
+  make LDFLAGS+="$_ldflags" all
 ```
 At this stage, it fails, probably due to `ac73ef4` which appears to rely on unreleased rtaudio changes.
 Let's do as the Arch folks, and revert this commit:
