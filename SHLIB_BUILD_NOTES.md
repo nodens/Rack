@@ -30,6 +30,7 @@ Arch packaging does exactly that, so we'll copy the approach (from <https://aur.
     samplerate rtmidi rtaudio)"
   make -C dep nodebshlib
   make LDFLAGS+="$_ldflags" all
+  make dist
 ```
 At this stage, it fails, probably due to `ac73ef4` which appears to rely on unreleased rtaudio changes.
 Let's do as the Arch folks, and revert this commit:
@@ -43,10 +44,11 @@ cd Fundamental
 git submodule update --init --recursive
 make dep
 make
+make dist
 make install # installs in ~/.Rack
 ```
 
-(note that if Fundamental has the same version, the module directory has to be deleted from ~/.Rack2/plugins/)
+(note that if Fundamental has the same version, the module directory has to be deleted from ~/.Rack/plugins/)
 **run Rack**:
 `./Rack`
 
